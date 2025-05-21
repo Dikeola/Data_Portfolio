@@ -1,0 +1,43 @@
+services:
+  - type: web
+    name: web-data-portfolio
+    env: node
+    buildCommand: |
+      # Install all dependencies including devDependencies
+      npm install --production=false
+      
+      # Install Vite and other dev dependencies
+      npm install -g vite
+      
+      # Install client dependencies and build
+      cd client
+      npm install
+      npm run build
+      cd ..
+      
+      # Build the server
+      npm run server:build
+      
+      # Ensure the public directory exists
+      mkdir -p dist/public
+      
+      # Copy client build to the correct location
+      cp -r client/dist/* dist/public/
+      
+      echo "Build completed successfully!"
+    startCommand: npm run server:start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+    plan: free
+    autoDeploy: true
+    region: oregon
+
+databases:
+  - name: web-data-portfolio-db
+    databaseName: web_data_portfolio
+    user: admin
+    plan: free
+    region: oregon
