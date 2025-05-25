@@ -1,0 +1,174 @@
+you are an amazing ui/ux designer and web developer---
+I want to create a portfolio website for myself, Dikeola Abdulmuqiit Ogunmola
+here are things you should know;
+linkedin - https://www.linkedin.com/in/dikeola/
+instagram - https://www.instagram.com/_d_i_e_k_k_y_/
+GitHub - https://github.com/Dikeola
+from Codecademy(https://www.codecademy.com/profiles/Dike01a)-Latest Certificates
+
+Career Path
+Business Intelligence Data Analyst
+Syllabus|Certificate
+
+Skill Path
+Data Science Foundations
+Syllabus|Certificate
+
+Skill Path
+Analyze Data with SQL
+Syllabus|Certificate
+
+Course
+Statistics: Histograms
+Syllabus|Certificate
+
+Course
+Statistics: Quartiles, Quantiles, and IQR
+Syllabus|Certificate
+
+Course
+Statistics: Mean, Median, Mode
+Syllabus|Certificate
+
+Course
+Statistics: Variance and Standard Deviation
+Syllabus|Certificate
+
+Course
+Statistics: Boxplots
+Syllabus|Certificate
+codecademy- 476 badges
+datacamp(https://www.datacamp.com/portfolio/dikeola62) - certifications; data analyst associate, python data associate, data analyst, sql associate, data literacy
+still data camp - DataCamp Course Completion
+Take a look at all the courses I’ve completed on DataCamp.
+My Courses
+
+Introduction to Python
+Introduction to SQL
+Intermediate SQL
+Intermediate Python
+Understanding Data Science
+Introduction to Excel
+Data Manipulation with pandas
+Joining Data in SQL
+Supervised Learning with scikit-learn
+Understanding Cloud Computing
+Understanding Data Engineering
+Introduction to Python for Developers
+Data Manipulation in SQL
+Introduction to Tableau
+Introduction to Data
+Introduction to Data Literacy
+Introduction to Git
+Introduction to Statistics in Python
+Understanding Data Visualization
+Introduction to Statistics
+Exploratory Data Analysis in SQL
+Joining Data with pandas
+Exploratory Data Analysis in Python
+Communicating Data Insights
+Data Preparation in Excel
+Introduction to Data Visualization with Matplotlib
+Cleaning Data in Python
+Introduction to Relational Databases in SQL
+Intermediate Python for Developers
+Python Toolbox
+Introduction to Data Visualization with Seaborn
+Introduction to Importing Data in Python
+Unsupervised Learning in Python
+Introduction to Data Culture
+Data Communication Concepts
+Intermediate Git
+Introduction to Python for Finance
+Intermediate Importing Data in Python
+Introduction to Regression with statsmodels in Python
+Data Visualization in Excel
+Introduction to Data Science in Python
+Data-Driven Decision Making in SQL
+Hypothesis Testing in Python
+Sampling in Python
+Data Literacy Case Study: Remote Working Analysis
+Machine Learning with Tree-Based Models in Python
+Working with Categorical Data in Python
+Cluster Analysis in Python
+Streamlined Data Ingestion with pandas
+Data Science for Business
+Intermediate Python for Finance
+Regular Expressions in Python
+Linear Classifiers in Python
+Feature Engineering for Machine Learning in Python
+Dimensionality Reduction in Python
+Model Validation in Python
+Analyzing Marketing Campaigns with pandas
+Hyperparameter Tuning in Python
+Introduction to Data Visualization with Plotly in Python
+Sentiment Analysis in Python
+Dealing with Missing Data in Python
+Ensemble Methods in Python
+My Tracks
+
+Data Analyst
+Python Data Fundamentals
+My Projects
+
+Analyzing Crime in Los Angeles
+When Was the Golden Era of Video Games?
+Analyzing Motorcycle Part Sales
+Consolidating Employee Data
+Exploring Airbnb Market Trends
+Analyzing Industry Carbon Emissions
+Analyzing Students' Mental Health
+Analyzing Online Sports Revenue
+Exploring NYC Public School Test Result Scores
+Customer Analytics: Preparing Data for Modeling
+Analyzing River Thames Water Levels
+Hypothesis Testing with Men's and Women's Soccer Matches
+Cleaning Bank Marketing Campaign Data
+Modeling Car Insurance Claim Outcomes
+Investigating Netflix Movies
+Data-Driven Product Management: Conducting a Market Analysis
+What's in an Avocado Toast: A Supply Chain Analysis
+Predictive Modeling for Agriculture
+Hypothesis Testing in Healthcare
+Predicting Movie Rental Durations
+Clustering Antarctic Penguin Species
+Visualizing the History of Nobel Prize Winners
+Analyze International Debt Statistics
+Debugging a Sales Data Workflow
+Inspecting Electric Vehicle Charging Trends
+Assessing Customer Churn Using Machine Learning
+Getting a Good Night's Sleep
+What Makes a Good Book?
+Creating Functions to Register App Users
+From Data to Dollars - Predicting Insurance Charges
+Facial Recognition with Supervised Learning
+Exploring London's Travel Network
+Examining the History of Lego Sets
+Analyzing Electric Vehicle Charging Habits
+Will This Customer Purchase Your Product?
+Understanding Subscription Behaviors
+Uncovering the World's Oldest Businesses
+Dr. Semmelweis and the Importance of Handwashing
+Extracting TV Data Insights---
+
+datawars.io(https://profiles.datawars.io/dikeola62) --finished projects on data wars below
+Programming
+2
+Data Analysis
+84
+—
+
+Machine Learning
+5
+—
+
+Databases
+19
+—
+
+Math and Statistics
+5
+
+Visualizations
+6
+—

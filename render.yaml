@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: web-data-portfolio
+    env: node
+    buildCommand: |
+      # Install dependencies
+      npm install
+      
+      # Build client and server
+      npm run build
+      
+      # Copy client build to server public directory
+      mkdir -p dist/public
+      cp -r dist/public/* dist/public/
+    startCommand: npm run start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        fromDatabase:
+          name: web-data-portfolio-db
+          property: connectionString
+      - key: SESSION_SECRET
+        generateValue: true
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASSWORD
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true
+    region: oregon
+    plan: free
+
+databases:
+  - name: web-data-portfolio-db
+    databaseName: web_data_portfolio
+    user: admin
+    plan: free
+    region: oregon
