@@ -1,14 +1,28 @@
-
 import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage.js";
 import nodemailer from "nodemailer";
 
+// Create reusable transporter object using SMTP transport
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  host: 'smtp.gmail.com',
+  port: 587,
+  secure: false, // true for 465, false for other ports
   auth: {
     user: 'Dikeola62@gmail.com',
-    pass: process.env.EMAIL_PASSWORD
+    pass: 'hogcaq-Xisjem-8vepti' // App Password for Gmail
+  },
+  tls: {
+    rejectUnauthorized: false // Only use this in development
+  }
+});
+
+// Verify transporter configuration
+transporter.verify(function(error, success) {
+  if (error) {
+    console.error('SMTP connection error:', error);
+  } else {
+    console.log('SMTP server is ready to take our messages');
   }
 });
 
@@ -118,21 +132,75 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.post('/api/send-email', async (req, res) => {
+    console.log('Received email request:', req.body); // Log the incoming request
+
     try {
       const { name, email, subject, message } = req.body;
-      
-      await transporter.sendMail({
-        from: email,
+
+      // Validate required fields
+      if (!name || !email || !subject || !message) {
+        console.log('Missing fields:', { name, email, subject, message });
+        return res.status(400).json({ 
+          error: 'Missing required fields',
+          details: {
+            name: !name,
+            email: !email,
+            subject: !subject,
+            message: !message
+          }
+        });
+      }
+
+      // Validate email format
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(email)) {
+        console.log('Invalid email format:', email);
+        return res.status(400).json({ 
+          error: 'Invalid email format',
+          details: 'Please enter a valid email address (e.g., name@example.com)'
+        });
+      }
+
+      console.log('Attempting to send email...');
+
+      // Send email
+      const info = await transporter.sendMail({
+        from: `"Portfolio Contact" <${email}>`,
         to: 'Dikeola62@gmail.com',
         subject: `Portfolio Contact: ${subject}`,
         text: `From: ${name} (${email})\n\n${message}`,
-        html: `<p><strong>From:</strong> ${name} (${email})</p><p>${message}</p>`
+        html: `
+          <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: 0 auto;">
+            <h2 style="color: #333;">New Contact Form Submission</h2>
+            <div style="background: #f5f5f5; padding: 15px; border-radius: 5px; margin: 10px 0;">
+              <p><strong>From:</strong> ${name}</p>
+              <p><strong>Email:</strong> ${email}</p>
+              <p><strong>Subject:</strong> ${subject}</p>
+            </div>
+            <div style="background: #fff; padding: 15px; border-radius: 5px; border: 1px solid #ddd;">
+              <h3 style="color: #666; margin-top: 0;">Message:</h3>
+              <p style="white-space: pre-wrap;">${message}</p>
+            </div>
+          </div>
+        `
+      });
+
+      console.log('Message sent successfully:', info.messageId);
+      res.json({ 
+        success: true, 
+        messageId: info.messageId 
+      });
+    } catch (error) {
+      console.error('Detailed email error:', {
+        error: error,
+        message: error instanceof Error ? error.message : 'Unknown error',
+        stack: error instanceof Error ? error.stack : undefined
       });
       
-      res.json({ success: true });
-    } catch (error) {
-      console.error('Email error:', error);
-      res.status(500).json({ error: 'Failed to send email' });
+      res.status(500).json({ 
+        error: 'Failed to send email',
+        details: 'Unable to send email. Please try again later or contact me directly at Dikeola62@gmail.com'
+      });
     }
   });
 
