@@ -9,15 +9,27 @@ interface ADHDTagProps {
   isHeader?: boolean;
 }
 
+// Standardized colors for different tags
+const TAG_COLORS = {
+  "UI/UX Design": "#4ECDC4",
+  "E-commerce": "#FFE66D",
+  "Web Development": "#FF6B6B",
+  "Data Analysis": "#FF9F1C",
+  "Mobile App": "#6B66FF"
+} as const;
+
 export default function ADHDTag({ 
   text, 
-  color = "#FF6B6B", 
+  color = TAG_COLORS["Web Development"], 
   delay = 0, 
   onClick, 
   isHeader = false 
 }: ADHDTagProps) {
   const [scope, animate] = useAnimate();
   const [isVisible, setIsVisible] = useState(true);
+  
+  // Get the standardized color for the tag
+  const tagColor = TAG_COLORS[text as keyof typeof TAG_COLORS] || color;
   
   const handleClick = () => {
     if (isHeader) {
@@ -55,7 +67,7 @@ export default function ADHDTag({
             x: 0, 
             opacity: 1,
             scale: 1,
-            backgroundColor: color,
+            backgroundColor: tagColor,
           }, { 
             duration: 0.8,
             type: "spring",
@@ -90,7 +102,7 @@ export default function ADHDTag({
     <motion.div
       ref={scope}
       className="adhd-tag-container"
-      initial={{ backgroundColor: color }}
+      initial={{ backgroundColor: tagColor }}
       animate={isHeader ? {
         // Smaller, subtle animation for header tag
         y: [0, -5, 0],
@@ -101,25 +113,22 @@ export default function ADHDTag({
           ease: "easeInOut",
           delay: delay,
         }
-      } : {
-        // Only apply hover effect for non-header tags
-      }}
+      } : {}}
       whileHover={{
-        scale: 1.1,
+        scale: 1.05,
         transition: { type: "spring", bounce: 0.5 }
       }}
       onClick={handleClick}
       style={{
         display: isVisible ? "inline-flex" : "none",
         padding: isHeader ? "0.3rem 0.7rem" : "0.5rem 1rem",
-        backgroundColor: color,
+        backgroundColor: tagColor,
         color: "white",
         borderRadius: "50px",
         fontWeight: "bold",
         cursor: "pointer",
-        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
+        boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
         zIndex: 10,
-        overflow: "visible",
         fontSize: isHeader ? "0.8rem" : "1rem"
       }}
     >
