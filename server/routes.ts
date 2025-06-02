@@ -3,14 +3,20 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage.js";
 import nodemailer from "nodemailer";
 
+// Debug logging for environment variables
+console.log('Email configuration:', {
+  user: process.env.EMAIL_USER,
+  hasPassword: !!process.env.EMAIL_PASSWORD
+});
+
 // Create reusable transporter object using SMTP transport
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
   port: 587,
   secure: false, // true for 465, false for other ports
   auth: {
-    user: 'Dikeola62@gmail.com',
-    pass: 'hogcaq-Xisjem-8vepti' // App Password for Gmail
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASSWORD
   },
   tls: {
     rejectUnauthorized: false // Only use this in development
@@ -21,6 +27,12 @@ const transporter = nodemailer.createTransport({
 transporter.verify(function(error, success) {
   if (error) {
     console.error('SMTP connection error:', error);
+    console.error('SMTP configuration:', {
+      host: 'smtp.gmail.com',
+      port: 587,
+      user: process.env.EMAIL_USER,
+      hasPassword: !!process.env.EMAIL_PASSWORD
+    });
   } else {
     console.log('SMTP server is ready to take our messages');
   }
@@ -132,7 +144,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   app.post('/api/send-email', async (req, res) => {
-    console.log('Received email request:', req.body); // Log the incoming request
+    console.log('Received email request:', req.body);
 
     try {
       const { name, email, subject, message } = req.body;
@@ -161,12 +173,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
         });
       }
 
-      console.log('Attempting to send email...');
+      console.log('Attempting to send email with config:', {
+        from: email,
+        to: process.env.EMAIL_USER,
+        subject: `Portfolio Contact: ${subject}`
+      });
 
       // Send email
       const info = await transporter.sendMail({
         from: `"Portfolio Contact" <${email}>`,
-        to: 'Dikeola62@gmail.com',
+        to: process.env.EMAIL_USER,
         subject: `Portfolio Contact: ${subject}`,
         text: `From: ${name} (${email})\n\n${message}`,
         html: `
@@ -194,12 +210,18 @@ export async function registerRoutes(app: Express): Promise<Server> {
       console.error('Detailed email error:', {
         error: error,
         message: error instanceof Error ? error.message : 'Unknown error',
-        stack: error instanceof Error ? error.stack : undefined
+        stack: error instanceof Error ? error.stack : undefined,
+        config: {
+          host: 'smtp.gmail.com',
+          port: 587,
+          user: process.env.EMAIL_USER,
+          hasPassword: !!process.env.EMAIL_PASSWORD
+        }
       });
       
       res.status(500).json({ 
         error: 'Failed to send email',
-        details: 'Unable to send email. Please try again later or contact me directly at Dikeola62@gmail.com'
+        details: 'Unable to send email. Please try again later or contact me directly at ' + process.env.EMAIL_USER
       });
     }
   });
