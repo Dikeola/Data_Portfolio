@@ -12,7 +12,6 @@ export default function Projects() {
       title: "NeoNubian Design Studio",
       description: "A professional design studio portfolio showcasing creative works and services with a modern, minimal interface.",
       tag: "UI/UX Design",
-      tagColor: "#4ECDC4",
       links: {
         demo: "https://webdev-1255.onrender.com",
         github: "https://github.com/Dikeola"
@@ -23,7 +22,6 @@ export default function Projects() {
       title: "Nebula Noodles",
       description: "A cosmic Asian fusion restaurant website with a celestial design theme, featuring an interactive 'Build Your Dish' experience and orbital menu navigation.",
       tag: "Web Development",
-      tagColor: "#FF6B6B",
       links: {
         demo: "https://webdev-r1pe.onrender.com",
         github: "https://github.com/Dikeola"
@@ -34,13 +32,71 @@ export default function Projects() {
       title: "Golden Nut Haven",
       description: "E-commerce platform for premium nuts with product customization, order processing, and responsive design.",
       tag: "E-commerce",
-      tagColor: "#FFE66D",
       links: {
         demo: "https://golden-nut-haven.windsurf.build",
         github: "https://github.com/Dikeola"
       }
     },
-
+    {
+      image: "/images/Tizeti.png",
+      title: "Tizeti",
+      description: "A modern telecommunications company website showcasing their internet services and solutions.",
+      tag: "Web Development",
+      links: {
+        demo: "https://tizeti.onrender.com",
+        github: "https://github.com/Dikeola"
+      }
+    },
+    {
+      image: "/images/Innoson Vehicles.png",
+      title: "Innoson Vehicles",
+      description: "A modern automotive website featuring an intuitive user interface, seamless navigation, and engaging vehicle showcases. Focused on delivering an exceptional user experience with interactive features and responsive design.",
+      tag: "UI/UX Design",
+      links: {
+        demo: "https://innoson-vehicles.onrender.com",
+        github: "https://github.com/Dikeola"
+      }
+    },
+    {
+      image: "/images/TastyBakes by oma.png",
+      title: "TastyBakes by Oma",
+      description: "A bakery website showcasing delicious treats, custom orders, and online ordering capabilities.",
+      tag: "E-commerce",
+      links: {
+        demo: "https://tastybakesbyoma.onrender.com",
+        github: "https://github.com/Dikeola"
+      }
+    },
+    {
+      image: "/images/Ganbis Bakery.png",
+      title: "Ganbis Bakery",
+      description: "A premium bakery website featuring artisanal breads, pastries, and custom cake orders.",
+      tag: "E-commerce",
+      links: {
+        demo: "https://ganbis-bakery.onrender.com",
+        github: "https://github.com/Dikeola"
+      }
+    },
+    {
+      image: "/images/Steel Dip Global.png",
+      title: "Steel Dip Global",
+      description: "A manufacturing company website showcasing their steel products and industrial solutions.",
+      tag: "Web Development",
+      links: {
+        demo: "https://steeldipglobal.onrender.com",
+        github: "https://github.com/Dikeola"
+      }
+    },
+    {
+      image: "/images/Meat.com.ng.png",
+      title: "Meat.com.ng",
+      description: "An online meat marketplace offering premium quality meats and delivery services.",
+      tag: "E-commerce",
+      links: {
+        demo: "https://meat-com-ng.onrender.com",
+        github: "https://github.com/Dikeola"
+      }
+    }
   ];
 
   return (
@@ -67,7 +123,7 @@ export default function Projects() {
           A showcase of my web development and data analysis projects
         </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {projects.map((project, index) => (
             <ProjectCard
               key={index}
@@ -75,7 +131,6 @@ export default function Projects() {
               title={project.title}
               description={project.description}
               tag={project.tag}
-              tagColor={project.tagColor}
               links={project.links}
             />
           ))}
