@@ -38,6 +38,7 @@ export default function Contact() {
         body: JSON.stringify(formState),
       });
 
+      console.log('Response status:', response.status);
       const data = await response.json();
       console.log('Server response:', data);
 
@@ -68,7 +69,11 @@ export default function Contact() {
       });
     } catch (error) {
       console.error('Error sending message:', error);
-      toast.error("Network error. Please check your internet connection and try again.");
+      if (error instanceof TypeError && error.message === 'Failed to fetch') {
+        toast.error("Cannot connect to the server. Please check your internet connection and try again.");
+      } else {
+        toast.error("An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setIsSubmitting(false);
     }
